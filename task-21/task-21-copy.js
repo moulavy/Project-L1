@@ -3,48 +3,50 @@
 */
 
 //Проверим размер колстека через глубину вызова рекурсии. Как только вылетит ошибка - значит стек переполнился.
-// let callStackSize = 0;
-// function recursiveFunction() {   
-//    try {
-//       callStackSize++;
-//       recursiveFunction();
-//    } catch (error) {
-//       console.error('Максимальный размер коллстека:', callStackSize);
-//    }
+let callStackSize = 0;
+
+// function recursiveFunction() {
+//    callStackSize++;
+//    recursiveFunction();
 // }
 
-// recursiveFunction();
+// try {
+//    recursiveFunction();
+// } catch (error) {
+//    console.error('Максимальный размер коллстека:', callStackSize);
+// }
+
 
 /*-------------------------5 переменных-------------------------*/
 
-let callStackSize = 0;
 function recursiveFunction() {
-   try {
-      let a = callStackSize + 1;
+   let a = callStackSize + 1;
       let b = a + 1;
       let c = b + 1;
       let d = c + 1;
       let e = d + 1;
-      let g = e + 1;
-      let l = g + 1;
+       let g = e + 1;
+       let l = g + 1;
       callStackSize++;
-      recursiveFunction();
-   } catch (error) {
-      console.error('Максимальный размер коллстека:', callStackSize);
-   }
+      recursiveFunction();   
 }
 
-recursiveFunction();
+try {
+   recursiveFunction();
+} catch (error) {
+   console.error('Максимальный размер коллстека:', callStackSize);
+}
+
 
 //0 переменных
 //Яндекс Браузер: 8958
-//Google Chrome:15449
+//Google Chrome:24498
 //Opera: 8962
 
 
 //5переменных
 //Opera: 6604
-//Google Chrome:11609
+//Google Chrome:15749
 //Яндекс браузер 6601
 
 /*Из статьи https://habr.com/ru/articles/550534/ о размере стека:
@@ -65,25 +67,26 @@ FunctionSize=N+K*SizeOfVar;
 
 Расчеты проведем в браузере Opera:
 K=0:
-X=(N+0*SizeOfVar)*8962=N*8962
+X=(N+0*SizeOfVar)*24498=N*24498
 
 K=5:
-X=(N+5*SizeOfVar)*6604
+X=(N+5*SizeOfVar)*13780
 
 Приравняем:
-N*8962=(N+5*SizeOfVar)*6604
+N*24498=(N+5*SizeOfVar)*13780
 
 Каждое число - 8 байт
-N*8962=(N+5*8)*6604
-N*8962=(N+40)*6604
-N*8962=40*N+40*6604
-N*8962=40*N+264160
-8922*N=26460
-N=29 (байт)
+N*24498=(N+5*8)*15749
+N*24498=(N+40)*15749
+N*24498=40*N+40*15749
+N*24498=40*N+629960
+24458*N=629960
+N=25 (байт)
 
 Подставим N в первое уравнение:
-X=29*8962=259898 (байтов)
+X=25*24498=612450(байтов)
 
 Проверка для 7 переменных:
-(72+7*8)
+(25+7*8)=81
+7561
 */
