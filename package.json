@@ -1,0 +1,7 @@
+{
+    "type": "module",
+    "name": "index",
+    "dependencies": {
+        "moment": "^2.29.4"
+    }
+}
