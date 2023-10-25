@@ -1,0 +1,27 @@
+ul{
+   display: flex;
+   flex-direction: column;
+   list-style: none;
+   padding: 0;
+   margin:0;
+}
+li{
+   
+   width: 60%;
+}
+.title{
+margin:30px auto 0;
+text-align: center;
+font-size: 25px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color:rgb(8, 8, 169);
+}
+.description{
+   font-size: 18px;
+   font-weight: 600;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+color:rgb(199, 0, 56);
+}
+.list-img{
+   width: 500px;   
+}
