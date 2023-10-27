@@ -2,6 +2,8 @@ let arrayData = [];
 const table = document.querySelector('.table');
 let currentPage = 1;
 const countItemsOnPage = 50;
+
+//Создаем заголовки в таблице
 function createHeaders() {
    const headerRow = document.createElement('tr'); // Создаем новую строку для заголовков
    const headers = ['Имя', 'Фамилия', 'Телефон', 'Адрес', 'Город', 'Состояние', 'Индекс'];
@@ -9,14 +11,51 @@ function createHeaders() {
    headers.forEach(headerText => {
       const headerCell = document.createElement('th'); // Создаем новую ячейку заголовка
       headerCell.textContent = headerText; // Устанавливаем текст ячейки
-      headerRow.appendChild(headerCell); // Добавляем ячейку в строку
-      headerCell.addEventListener('click', sortirovka);
+      headerRow.appendChild(headerCell); // Добавляем ячейку в строку      
    });
 
    table.appendChild(headerRow); // Добавляем строку с заголовками в таблицу
+   const headersElements = document.querySelectorAll('.table tr th');
+
+   headersElements.forEach((headerElement, fieldIndex) => {
+      switch (fieldIndex){
+         case 3:
+            headerElement.addEventListener('click', () => sortData(compareAddress));
+            break;
+         case 6:
+            headerElement.addEventListener('click', () => sortData(compareNumberField(fieldIndex)));
+            break;
+         default:
+            headerElement.addEventListener('click', () => sortData(compareStringField(fieldIndex)));
+      }
+   })
+
 }
-function sortirovka() {
-   
+function compareStringField(fieldIndex) {
+   return function (a, b) {
+      return a[Object.keys(a)[fieldIndex]].localeCompare(b[Object.keys(b)[fieldIndex]]);
+   };
+}
+function compareAddress(a, b) {
+   if (parseInt(a.address) < parseInt(b.address)) return -1;
+   else if (parseInt(a.address) === parseInt(b.address)) {
+      const aWithoutNumbers = a.address.replace(/\d+/g, '');
+      const bWithoutNumbers = b.address.replace(/\d+/g, '');
+      return aWithoutNumbers.localeCompare(bWithoutNumbers);
+   }
+   else return 1;
+}
+function compareNumberField(fieldIndex) {
+   return function (a, b) {
+      return a[Object.keys(a)[fieldIndex]]-b[Object.keys(b)[fieldIndex]];
+   };
+}
+
+function sortData(compareFunction) {
+   arrayData.sort(compareFunction)
+
+   // Обновляем таблицу с отсортированными данными
+   addData();
 }
 function addData() {
    const start = (currentPage - 1) * countItemsOnPage;
@@ -73,7 +112,6 @@ fetch('http://www.filltext.com/?rows=1000&fname=%7BfirstName%7D&lname=%7BlastNam
       return response.json();
    })
    .then(data => {
-      console.log(data)
       arrayData = [...data];
       addData();
       paginationButtons();
