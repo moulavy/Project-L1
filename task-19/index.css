@@ -1,0 +1,23 @@
+.widget{
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   margin:0 auto;
+   width: 500px;
+   height: 500px;
+   border:1px solid black;
+   overflow-y: auto;
+}
+.title{
+   font-size: 30px;
+   text-align: center;
+}
+.news-list{
+   padding:0 40px;
+   list-style: none;
+}
+.img-news{
+   width: 100%;   
+}
+.list-item{
+   border-bottom: 1px gray solid;
+   padding-bottom: 10px;
+}
