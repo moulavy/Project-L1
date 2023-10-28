@@ -2,7 +2,7 @@ let arrayData = [];
 const table = document.querySelector('.table');
 let currentPage = 1;
 const countItemsOnPage = 50;
-
+const sortedStates = [false, false, false, false, false, false];
 //Создаем заголовки в таблице
 function createHeaders() {
    const headerRow = document.createElement('tr'); // Создаем новую строку для заголовков
@@ -18,17 +18,20 @@ function createHeaders() {
    const headersElements = document.querySelectorAll('.table tr th');
 
    headersElements.forEach((headerElement, fieldIndex) => {
-      switch (fieldIndex){
-         case 3:
-            headerElement.addEventListener('click', () => sortData(compareAddress));
-            break;
-         case 6:
-            headerElement.addEventListener('click', () => sortData(compareNumberField(fieldIndex)));
-            break;
-         default:
-            headerElement.addEventListener('click', () => sortData(compareStringField(fieldIndex)));
-      }
-   })
+      headerElement.addEventListener('click', () => {
+         switch (fieldIndex) {
+            case 3:
+               sortData(compareAddress, fieldIndex);
+               break;
+            case 6:
+               sortData(compareNumberField(fieldIndex), fieldIndex);
+               break;
+            default:
+               sortData(compareStringField(fieldIndex), fieldIndex);
+         }
+      });
+   });
+
 
 }
 function compareStringField(fieldIndex) {
@@ -51,17 +54,22 @@ function compareNumberField(fieldIndex) {
    };
 }
 
-function sortData(compareFunction) {
-   arrayData.sort(compareFunction)
-
-   // Обновляем таблицу с отсортированными данными
-   addData();
+function sortData(compareFunction, fieldIndex) {  
+   const direction = !sortedStates[fieldIndex];
+   sortedStates.fill(false);
+   sortedStates[fieldIndex] = direction;
+   if (direction) {
+      arrayData.sort(compareFunction);
+   } else {
+      arrayData.sort((a, b) => compareFunction(b, a));
+   }
+   updateData();
 }
-function addData() {
+
+function updateData() {
    const start = (currentPage - 1) * countItemsOnPage;
    const end = start + countItemsOnPage;
-   const showData = arrayData.slice(start, end);
-   
+   const showData = arrayData.slice(start, end);   
    table.innerHTML = "";
    createHeaders();
    showData.forEach(item => {
@@ -73,7 +81,6 @@ function addData() {
       const cityCell = row.insertCell(4);
       const stateCell = row.insertCell(5);
       const zipCell = row.insertCell(6);
-
       nameCell.textContent = item.fname;
       surnameCell.textContent = item.lname;
       tellCell.textContent = item.tel;
@@ -83,6 +90,7 @@ function addData() {
       zipCell.textContent = item.zip;
    })
 }
+
 function paginationButtons() {
    const pageCount = Math.ceil(arrayData.length / countItemsOnPage); 
    const paginationBlock = document.querySelector(".pagination-container");
@@ -96,7 +104,7 @@ function paginationButtons() {
          })
          currentPage = i;
          button.classList.add('active');
-         addData();
+         updateData();
       });
       paginationBlock.appendChild(button);
    }
@@ -113,7 +121,7 @@ fetch('http://www.filltext.com/?rows=1000&fname=%7BfirstName%7D&lname=%7BlastNam
    })
    .then(data => {
       arrayData = [...data];
-      addData();
+      updateData();
       paginationButtons();
    })
    .catch(error => {
