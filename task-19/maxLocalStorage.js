@@ -1,9 +1,7 @@
-// 18.	Подсчитать максимальный объем данных, который можно записать в localStorage вашего браузера.
-
 //Нам необходимо найти такое число, при котором будет ошибка переполнения localStorage
 //Обычным поиском, где я бы прибалвляла 1 пока не вылетела ошибка браузеру нужно было бы сделать 5миллионов действий(браузер просто зависал)
 //На помощь пришел бинарный поиск, который каждый раз исключает половину неподходящих чисел.
-localStorage.clear();
+localStorage.removeItem('test');
 function getMaxLocalStorageSize() {
    let low = 1; // Минимальный размер данных(1байт)
    let high = Number.MAX_SAFE_INTEGER; // Максимально возможный размер данных
@@ -22,7 +20,8 @@ function getMaxLocalStorageSize() {
    return high;
 }
 
-const maxLocalStorageSize = getMaxLocalStorageSize();
-console.log(`Максимальный объем данных в localStorage: ${maxLocalStorageSize} байт`);
+
+//console.log(`Максимальный объем данных в localStorage: ${maxLocalStorageSize} байт`);
+
 
 //Размер localStorage 5242877 байт(5мб)
