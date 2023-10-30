@@ -4,7 +4,7 @@
 */
 //Задачу необходимо запускать в браузере, так как объект Image не является частью Nodejs
 //принимаем url изображения
-function promiseFunction(url) {   
+function promiseFunction(url) {
    //возвращаем промис, который вернет либо ошибку либо свойства картинки
    return new Promise((resolve, reject) => {
       //создаем объект img через конструктор new Image, чтобы использовать методы объекта
@@ -13,7 +13,7 @@ function promiseFunction(url) {
       //если картинка загрузилась возвращаем успешный ответ с ссылкой картинки
       img.onload = () => {
          resolve({
-            src:url
+            src: url
          })
       }
       //если картинка не загрузилась возвращаем ответ с ошибкой
@@ -21,14 +21,14 @@ function promiseFunction(url) {
          reject(error);
       };
    })
-   
+
 }
 
 const imgOne = 'https://wallbox.ru/resize/1440x900/wallpapers/main/201344/91ebfe65c9dcd05.jpg'
 promiseFunction(imgOne).then(dataImage => {
-      console.log('Загрузка прошла успешно:', dataImage.src)
-   }
+   console.log('Загрузка прошла успешно:', dataImage.src)
+}
 )
    .catch(error => {
-   console.error("Ошибка загрузки изображения:", error);
-});
+      console.error("Ошибка загрузки изображения:", error);
+   });

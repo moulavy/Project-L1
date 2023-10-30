@@ -12,7 +12,7 @@ const array = [
       id: 1,
       title: 'Трехцветная кошка',
       description: 'Домашняя кошка с пятнами чёрного, белого и рыжего цветов.Чёрный(пигмент эумеланин) и рыжий(пигмент феомеланин) под воздействием генов, видоизменяющих их оттенки, могут превращаться соответственно в голубой и кремовый, шоколадный и рыжий, лиловый и кремовый и др.',
-      img:'https://wp-s.ru/wallpapers/6/3/561029086232966/otdyxayushhij-kotenok-s-ustalym-vzglyadom.jpg'
+      img: 'https://wp-s.ru/wallpapers/6/3/561029086232966/otdyxayushhij-kotenok-s-ustalym-vzglyadom.jpg'
    },
    {
       id: 2,

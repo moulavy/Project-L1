@@ -34,7 +34,7 @@ function debounce(callback, ms) {
 //callback - функция которую нам надо отложить
 function throttle(callback, ms) {
    let isThrottled = false;//флаг, с помощью которого отслеживаем разрешено ли в данный момент выполнение функции callback
-   return function() {
+   return function () {
       if (isThrottled) {
          return;//если выполнение функции уже отложено, не делаем ничего и выходим из функции
       }
@@ -89,6 +89,6 @@ const debouncedApiHandler = debounce(apiHandler, 1000);//применяем debo
 
 //Считаю нецелесообразным использовать и троттлинг и дебоусинг. Выбор был сделан в пользу дебоусинга
 inputElement.addEventListener('input', function () {
-  debouncedApiHandler();
- //  throttledApiHandler();
+   debouncedApiHandler();
+   //  throttledApiHandler();
 });

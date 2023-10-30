@@ -17,7 +17,6 @@ try {
    callStackSize = 0;
 }
 
-
 //Google Chrome:24498 вызовов
 //Opera: 13941 вызовов
 //FireFox: 12398 вызовов

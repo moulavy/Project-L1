@@ -7,23 +7,23 @@
 */
 //Создаем библиотеку MathX. Используем замыкание для создания приватных функций и переменных.
 function MathX() {
-    //Приватная функция simpleNumber - проверяет, является ли число простым.
+   //Приватная функция simpleNumber - проверяет, является ли число простым.
    function simpleNumber(number) {
-       //Если меньше или равно 1 - не является простым
+      //Если меньше или равно 1 - не является простым
       if (number <= 1) return false;
       //Если имеет больше двух делителей(1 и себя самого) - не является простым
-       for (let i = 2; i < number; i++) {
-          if (number % i === 0) return false;
-       }
-       return true;
+      for (let i = 2; i < number; i++) {
+         if (number % i === 0) return false;
+      }
+      return true;
    }
    return {
       //Запоминаем значения ряда Фибоначи в массив. Изначально там хранится 0 и 1. 
       //Каждый следующий элемент - сумма двух предыдущих. Возвращаем n-й элемент ряда.
       fibonacci: function (n) {
-         let fib = [0,1];
+         let fib = [0, 1];
          for (let i = 2; i <= n; i++) {
-            fib[i] = fib[i-1] + fib[i - 2];
+            fib[i] = fib[i - 1] + fib[i - 2];
          }
          return fib[n];
       },
@@ -41,20 +41,20 @@ function MathX() {
          let i = 1;
          //Проходимся циклом, пока количество простых не станет равно заданному n.         
          while (arrSimple.length < n) {
-         //Если число простое - добавляем в массив простых чисел.
+            //Если число простое - добавляем в массив простых чисел.
             if (simpleNumber(i)) {
-               arrSimple.push(i);               
+               arrSimple.push(i);
             }
             i++;
          }
          //Возвращаем последнее число
-         return arrSimple[n-1];
+         return arrSimple[n - 1];
       },
       allSimple: function (n) {
          let arrSimple = [];
          let i = 1;
          //Проверяем числа на простоту до числа n
-         while (i<=n) {
+         while (i <= n) {
             if (simpleNumber(i)) {
                arrSimple.push(i);
             }

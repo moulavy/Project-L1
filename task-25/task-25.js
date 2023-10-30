@@ -15,9 +15,9 @@ function createElementStyle(tagName, text, styles) {
 }
 const stylesBlock = {
    color: 'red',
-   fontSize:'30px',
+   fontSize: '30px',
    width: '500px',
    height: '400px',
-   backgroundColor:"blue"
+   backgroundColor: "blue"
 }
 createElementStyle('div', 'Я новый элемент', stylesBlock);

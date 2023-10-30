@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
    }
 
-//Пагинация 
+   //Пагинация 
    function paginationButtons() {
       const pageCount = Math.ceil(arrayData.length / countItemsOnPage);//определяем количество страниц
       const paginationBlock = document.querySelector(".pagination-container");//определяем блок в котором будут располагатсья кнопки
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const buttons = document.querySelectorAll('.pagination-btn');
    }
 
-//осуществляем асинхронный fetch запрос к серверу
+   //осуществляем асинхронный fetch запрос к серверу
    fetch('http://www.filltext.com/?rows=1000&fname=%7BfirstName%7D&lname=%7BlastName%7D&tel=%7Bphone%7Cformat%7D&address=%7BstreetAddress%7D&city=%7Bcity%7D&state=%7BusState%7Cabbr%7D&zip=%7Bzip%7D&pretty=true')
       .then(response => {
          if (!response.ok) {

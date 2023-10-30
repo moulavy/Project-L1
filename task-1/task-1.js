@@ -7,8 +7,8 @@
 function isPalindrome(value) {
    //Проверяем на тип, превращаем в строку при типе number
    if (typeof value === 'number') {
-      value=value.toString();
-      console.log(typeof(str))
+      value = value.toString();
+      console.log(typeof (str))
    }
    //Переводим в нижний регистр и превращаем в массив
    let arr = value.toLowerCase().split('');

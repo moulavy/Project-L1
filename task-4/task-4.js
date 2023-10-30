@@ -11,17 +11,17 @@
 function declensionOfWord(number, one, few, many) {
    //Проверяем, если заканчивается на 1, но не на 11
    if (number % 10 === 1 && number % 100 !== 11) {
-      return number + ' '+one;
+      return number + ' ' + one;
    }
    //Проверяем заканчивается ли на 2,3 или 4, но не на 12,13,14
    else if (number % 10 >= 2 && number % 10 <= 4 && (number % 100 < 10 || number % 100 >= 20)) {
-      return number + ' '+few;
+      return number + ' ' + few;
    } else {
-      return number+' '+ many;
+      return number + ' ' + many;
    }
 }
 console.log(declensionOfWord(1024, 'пользователь', 'пользователя', 'пользователей'));//1024 пользователя
 console.log(declensionOfWord(1026, 'пользователь', 'пользователя', 'пользователей'));//1026 пользователей
 console.log(declensionOfWord(121, 'пользователь', 'пользователя', 'пользователей'));//121 пользователь
 
-export {declensionOfWord}
+export { declensionOfWord }

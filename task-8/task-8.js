@@ -6,15 +6,15 @@ let arrFun = [function one() { return 1; }, function two() { return 2; }, functi
 
 //Функция которая принимает в себя массив функций arrFun. В функции создаем массив, в котором будем хранить результаты вызовов функций.
 function rezArrFun(arrFun) {
-   let arr = [];
-   return function inner() {
-      //проходимся по всему массиву
-      arrFun.forEach(element => {
-        //добавляем в массив результат вызова
+  let arr = [];
+  return function inner() {
+    //проходимся по всему массиву
+    arrFun.forEach(element => {
+      //добавляем в массив результат вызова
       arr.push(element())
-     });
-      return arr;
-  } 
+    });
+    return arr;
+  }
 }
 
 const output = rezArrFun(arrFun);

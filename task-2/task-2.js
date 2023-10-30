@@ -7,14 +7,14 @@ function isStrangeNumber(value) {
    //Заводим переменную суммы.
    let sum = 0;
    //Проходимся циклом до заданного числа и считаем сумму делителей. 
-   for (let i = 1; i < value; i++){
+   for (let i = 1; i < value; i++) {
       //Если входное число делится на проверяемое число без остатка - оно является его делителем.
       if (value % i === 0) {
          sum += i;
       }
    }
    //Если число странное - возвращаем true, иначе false.
-   return (value===sum)
+   return (value === sum)
 }
 console.log(isStrangeNumber(6))//true, 6=1+2+3
 console.log(isStrangeNumber(12))//false

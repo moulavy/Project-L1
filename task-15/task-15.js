@@ -4,7 +4,7 @@
 //функция которая возвращает промис
 function delay(ms) {
    return new Promise((resolve) => {
-      setTimeout(resolve,ms)
+      setTimeout(resolve, ms)
    })
 }
 
@@ -15,7 +15,6 @@ async function asyncFunction() {
    console.log('Прошла 1 секунда');
    await delay(500);
    console.log('Прошло еще пол секунды');
-   
+
 }
 asyncFunction()
-  

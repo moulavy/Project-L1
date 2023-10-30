@@ -1,12 +1,12 @@
 //Создаем класс в котором определены геттеры и сеттеры, при помощи которых можно получить свойства книги или изменить.
-class Book{
+class Book {
    constructor(name, author, year) {
       //определеяем приватные переменные, this обозначает текущий экземпляр объекта
       this._name = name;
       this._author = author;
       this._year = year;
    }
-   
+
    get name() {
       return this._name;
    }

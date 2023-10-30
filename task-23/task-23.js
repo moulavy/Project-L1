@@ -18,14 +18,14 @@ function analyzerPassword(password) {
    let numbers = /\d/.test(password);
    let specialChars = /[!@#$%^&*(),.?":{}|<>]/.test(password);//проверка на специальный символ
    if (lowerCase && upperCase && numbers && specialChars) {
-      return "Ура! У вас сильный пароль!";      
+      return "Ура! У вас сильный пароль!";
    }
    return "Слишком слабый пароль. Его легко взломать. Пароль должен содержать латинские буквы в разных регистрах, цифры и специальные символы.";
 }
 //вешаем обработчик на кнопку
 btn.addEventListener('click', function (e) {
    e.preventDefault();//отменяем действие по умолчанию
-let res=analyzerPassword(password.value);
+   let res = analyzerPassword(password.value);
    message.textContent = res;
 })
 

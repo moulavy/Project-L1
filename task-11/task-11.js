@@ -5,7 +5,7 @@
 //outer возвращает inner
 function outer() {
    let a = 'внешняя переменная';
-    function inner() {
+   function inner() {
       console.log(a);
    }
    return inner;

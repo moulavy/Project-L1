@@ -6,14 +6,14 @@ arrObj = [
    { name: 'John', age: 25 },
    { name: 'Kate', age: 20 },
    { name: 'Aznna', age: 22 },
-   { name: 'Aarol', age: 22 },   
+   { name: 'Aarol', age: 22 },
    { name: 'Bob', age: 89 }
 ]
 console.log('Исходный массив: ', arrObj)
 //Сортировка встроенным методом sort
 let arrSort = [...arrObj];
 arrSort.sort(function (a, b) {
-//проверяем, не равны ли age
+   //проверяем, не равны ли age
    if (a.age !== b.age) {
       //если в sort поступает отрицательное число - элементы меняются(становятся по возрастанию)
       return a.age - b.age;
@@ -31,7 +31,7 @@ console.log('Сортировка встроенным методом sort: ', a
 function bubbleSort(arr, comparer) {
    //проходимся по массиву двумя циклами - каждый раз сравнивая два элемента
    for (let i = 0; i < arr.length; i++) {
-      for (let j = i + 1; j < arr.length; j++) { 
+      for (let j = i + 1; j < arr.length; j++) {
          //если текущий элемент a[j] меньше a[i], то меняем элементы местами
          //и так a[i] сравнивается со всеми числами после него до конца массива
          if (comparer(arr[j], arr[i])) {
@@ -44,14 +44,14 @@ function bubbleSort(arr, comparer) {
    return arr;
 }
 
-console.log('Сортировка пузырьком:',bubbleSort([...arrObj], function (a,b) {
+console.log('Сортировка пузырьком:', bubbleSort([...arrObj], function (a, b) {
    if (a.age !== b.age) {
-      return a.age < b.age;     
+      return a.age < b.age;
    }
    else {
       if (a.name.localeCompare(b.name)) {
          return true;
       }
       else return false;
-   }   
+   }
 }));

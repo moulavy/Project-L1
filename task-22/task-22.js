@@ -6,11 +6,11 @@ function recursiveDocumentWrite() {
       document.write('<div>Текст</div>'); // Пишем текст в документ
       recursiveDocumentWrite(); // Рекурсивный вызов функции
    } catch (error) {
-      console.log('Максимальное количество раз:', max); 
-      console.error('Произошла ошибка:', error); 
+      console.log('Максимальное количество раз:', max);
+      console.error('Произошла ошибка:', error);
    }
 }
 
-recursiveDocumentWrite(); 
+recursiveDocumentWrite();
 
 
